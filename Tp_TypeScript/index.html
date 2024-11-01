@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi de Lecture de Livres</title>
+    <style>
+        body {
+            background-color: #181818; /* Arrière-plan sombre */
+            padding: 40px;
+            font-family: 'Arial', sans-serif;
+            color: #f4f4f4; /* Texte clair pour une meilleure lisibilité */
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #282828; /* Fond sombre pour le conteneur */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Ombre plus marquée */
+        }
+        h1 {
+            font-size: 28px; /* Taille augmentée pour le titre */
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8); /* Couleur blanche transparente pour le titre */
+        }
+        form {
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        form:hover {
+            transform: scale(1.02); /* Effet de légère augmentation au survol */
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #555; /* Bordure douce */
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #333; /* Fond sombre pour les champs */
+            color: #f4f4f4; /* Texte clair dans les champs */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: rgba(255, 255, 255, 0.8); /* Couleur de bordure au focus */
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+            outline: none; /* Supprime le contour par défaut */
+        }
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)); /* Dégradé blanc transparent */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour le bouton */
+        }
+        button:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4)); /* Dégradé plus clair au survol */
+            transform: translateY(-2px); /* Effet de levée */
+        }
+        #bookTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            color: #f4f4f4; /* Couleur claire pour le texte du tableau */
+        }
+        #bookTable th, #bookTable td {
+            border: 1px solid #444; /* Bordure douce pour les cellules du tableau */
+            padding: 10px;
+            text-align: left;
+        }
+        #bookTable th {
+            background-color: rgba(255, 255, 255, 0.8); /* Couleur blanche transparente pour l'en-tête du tableau */
+            color: black; /* Texte noir dans l'en-tête */
+            font-weight: bold; /* En-tête en gras */
+        }
+        #bookTable tr:hover {
+            background-color: #333; /* Surlignage sombre au survol */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ajouter un Nouveau Livre</h1>
+        <form id="bookForm">
+            <input id="title" type="text" placeholder="Titre" required>
+            <input id="author" type="text" placeholder="Auteur" required>
+            <input id="pages" type="number" placeholder="Nombre de Pages" required>
+            <input id="suggestedBy" type="text" placeholder="Suggéré Par" required>
+            <select id="status" required>
+                <option value="" disabled selected>Sélectionner l'État de Lecture</option>
+                <option value="Not Started">Non Commencé</option>
+                <option value="In Progress">En Cours</option>
+                <option value="Completed">Terminé</option>
+            </select>
+            <button type="submit">Ajouter le Livre</button>
+        </form>
+
+        <table id="bookTable">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Pages</th>
+                    <th>Suggéré Par</th>
+                    <th>État</th>
+                </tr>
+            </thead>
+            <tbody id="bookList"></tbody>
+        </table>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
